@@ -582,8 +582,8 @@ def return_message():
                 #                                        chat_with_history)
                 # content = "可以"
                 query = send_message
-                content = chain({"query":query+"(必须用中文回答,不要用英文回答。如果没有答案，输出：我不知道。)"})
-                print(content)
+                content = chain({"query":query})
+                # print(content)
                 result = content['result']
                 a = result.split("。")
                 a.remove('')
@@ -605,6 +605,7 @@ def return_message():
                         final_res += (a[i]+'。'+'[{}]'.format(str(source[i]+1)))
                 final_res += (a[-1]+'。'+ '[{}]'.format(str(source[-1]+1)))
 
+                result = final_res
                 result += '\n参考资料：'
                 source = list(set(source))
                 for i in source:
